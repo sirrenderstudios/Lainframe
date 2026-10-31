@@ -1,0 +1,10 @@
+[Unit]
+Description=Lainframe worn sensor (opt-in): headset on/off -> ~/.local/state/lainframe/worn, optional brightness switching
+
+[Service]
+ExecStart=/usr/bin/python3 %h/lainframe/extras/worn/wornwatch.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

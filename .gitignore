@@ -1,0 +1,48 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Backups and logs
+*.bak*
+*.log
+*.tmp
+
+# Art (shipped as GitHub Release downloads, never in git; see ART_NOTICE.md)
+art/
+clips_grok/
+clips_baked/
+skies/
+*.rgbz
+*.zip
+*.tgz
+
+# Models and audio (downloaded by the setup wizard)
+*.onnx
+*.bin
+ggml-*.bin
+*.wav
+
+# Headset captures and test output
+captures/
+sim_out/
+
+# Demo media: screenshots (docs/media/*.png) ARE committed; the demo video is large, so it goes in a release instead
+docs/media/*.mp4
+
+# Local config / secrets (config lives in %APPDATA%\Lainframe, but never commit a stray copy or a key)
+config.json
+*.pem
+id_rsa*
+id_ed25519*
+*_ed25519
+*_ed25519.pub
+
+# OS / editor
+Thumbs.db
+Desktop.ini
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,13 @@
+[Unit]
+Description=Lainframe mic extra (opt-in): mic gain + EQ on the PC stream
+After=pipewire.service wireplumber.service
+
+[Service]
+ExecStart=/bin/bash %h/lainframe/extras/mic/keeper.sh
+# put the PC stream back on the plain mic before the EQ goes away (a gap with no link closes Steam Link's mic stream)
+ExecStop=-/bin/bash %h/lainframe/extras/mic/link.sh off
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

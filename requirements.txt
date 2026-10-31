@@ -1,0 +1,9 @@
+# Lain Brain (PC) Python packages. LainBrain.bat installs these into .venv (only again when this file changes).
+# setup: art baking, SteamVR background panorama
+pillow>=10.0
+numpy>=2.0
+# voice: Kokoro TTS + lip sync (espeak-ng phonemes); kokoro-onnx also pulls in onnxruntime
+kokoro-onnx>=0.4.9
+soundfile>=0.12
+phonemizer>=3.3
+espeakng-loader>=0.2.4

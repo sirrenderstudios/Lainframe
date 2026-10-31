@@ -1,0 +1,12 @@
+[Unit]
+Description=Lainframe: Lain on the Steam menu (shows only while the Frame streams from a PC)
+After=steamvr.service
+PartOf=steamvr.service
+
+[Service]
+ExecStart=/usr/bin/python3 %h/lainframe/lain/lain_player.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=steamvr.service

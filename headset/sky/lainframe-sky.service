@@ -1,0 +1,12 @@
+[Unit]
+Description=Lainframe: live time-of-day skybox (overlay cube; hidden while a game runs)
+After=steamvr.service
+PartOf=steamvr.service
+
+[Service]
+ExecStart=/usr/bin/python3 %h/lainframe/sky/skyclock.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=steamvr.service

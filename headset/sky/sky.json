@@ -1,0 +1,25 @@
+{
+  "fade_min": 40,
+  "schedule": [
+    [
+      "05:45",
+      "lain_dusk"
+    ],
+    [
+      "08:00",
+      "lain_day"
+    ],
+    [
+      "16:30",
+      "lain_sunset"
+    ],
+    [
+      "18:00",
+      "lain_dusk"
+    ],
+    [
+      "19:30",
+      "lain_night"
+    ]
+  ]
+}

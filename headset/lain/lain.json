@@ -1,0 +1,18 @@
+{
+ "width": 0.728,
+ "drop_m": -0.07,
+ "bottom_pad_px": 0,
+ "toward_you": 0.0,
+ "sort": 1,
+ "hit_sort": 12,
+ "hit_box": [
+  0.12,
+  0.05,
+  0.91,
+  1.0
+ ],
+ "hit_forward_m": 0.03,
+ "wake": true,
+ "lips": true,
+ "lips_offset_s": 0.08
+}

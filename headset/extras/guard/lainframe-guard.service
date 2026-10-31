@@ -1,0 +1,9 @@
+[Unit]
+Description=Lainframe guard (opt-in): keep the Frame booting into game mode after SteamOS updates; fix a gamescope crash loop
+
+[Service]
+Type=simple
+ExecStart=/bin/bash %h/lainframe/extras/guard/frame_guard.sh
+
+[Install]
+WantedBy=default.target
