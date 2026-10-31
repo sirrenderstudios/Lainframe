@@ -630,6 +630,7 @@ def status(cfg=None, check_headset=True):
     print("\n%sLain Brain status%s" % (B, X))
     info("config:   ", config.CONFIG, "" if config.exists() else "(not created yet)")
     info("headset:  ", cfg["headset"]["host"] or "(not set)", "user", cfg["headset"]["user"])
+    info("art:      ", assets.art_dir(cfg))
     ex = [k for k in ("guard", "worn", "mic") if cfg["extras"][k]] + (["brightness"] if cfg["extras"]["brightness"] else [])
     info("extras:   ", ", ".join(ex) or "none")
     info("voice:    ", ("on, models %s / %s" % (cfg["voice"]["chat_model"], cfg["voice"]["model"])) if cfg["voice"]["enabled"] else "off")

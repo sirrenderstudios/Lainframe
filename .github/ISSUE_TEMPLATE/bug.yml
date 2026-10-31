@@ -1,0 +1,16 @@
+name: Something broke
+description: Setup failed, Lain or the sky misbehaves, anything not working
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for trying Lainframe this early. First run `LainBrain.bat doctor` and paste what it says below."
+  - type: textarea
+    attributes: {label: What happened, description: "What you did, what you expected, what you saw instead"}
+    validations: {required: true}
+  - type: textarea
+    attributes: {label: "`LainBrain.bat doctor` output", render: text}
+  - type: input
+    attributes: {label: SteamOS version on the headset, placeholder: "Settings > System"}
+  - type: textarea
+    attributes: {label: Logs (optional), description: "~/.local/state/lainframe/*.log on the headset, or the bridge log the doctor points to", render: text}

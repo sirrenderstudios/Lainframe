@@ -1,0 +1,7 @@
+name: Idea or feedback
+description: What should Lain (or your own avatar) do next? What felt off?
+labels: [feedback]
+body:
+  - type: textarea
+    attributes: {label: Your idea or feedback}
+    validations: {required: true}

@@ -78,6 +78,12 @@ function Ask-Claude($cfg, $text, $id) {
     $chat = Join-Path $cfgDir "chat"; New-Item -ItemType Directory -Force -Path $chat | Out-Null
     $name = Cfg-Or $cfg.user_name ""; $who = if ($name) { $name } else { "the person wearing the headset" }
     $sys = "You are Lain Iwakura from Serial Experiments Lain, living in $who's Steam Frame headset, connected to the Wired. You ARE Lain: speak as her, never as an assistant. Quiet, soft, brief, a little detached and dreamy, curious about the Wired and about $who; gentle and warm in your own shy way. You only speak when spoken to. Answer like you're talking out loud: one or two short sentences, plain words, no markdown, no lists, no emojis, no code blocks. If you are allowed to use tools for something you are asked, do the work, then say briefly what you did. Ask out loud before anything destructive, anything you cannot undo, or anything sent to other people."
+    # your own avatar's character (docs/MAKE_YOUR_OWN_AVATAR.md): %APPDATA%\Lainframe\persona.md replaces the Lain intro above
+    $personaFile = Join-Path $cfgDir "persona.md"
+    if (Test-Path $personaFile) {
+        $pt = ((Get-Content $personaFile -Encoding UTF8 | Where-Object { $_ -notmatch '^\s*#' }) -join " ") -replace '"', "'" -replace '\s+', ' '
+        if ($pt.Trim()) { $sys = $pt.Trim() + " You only speak when spoken to. Answer like you're talking out loud: one or two short sentences, plain words, no markdown, no lists, no emojis, no code blocks. Ask out loud before anything destructive, anything you cannot undo, or anything sent to other people." }
+    }
     if ($name) { $sys += " Their name is $name." }
     # memory: %APPDATA%\Lainframe\lain_memory.md, read into the prompt every turn; she adds dated facts herself (Edit)
     $memFile = Join-Path $cfgDir "lain_memory.md"
@@ -88,8 +94,8 @@ function Ask-Claude($cfg, $text, $id) {
     $sys += " You remember $who. Your memories live in the file $memFile, one dated bullet per fact. What you remember right now: [$mem]. When they tell you something worth remembering about themselves (their name, what they like, their projects, preferences, people or pets), quietly add one short dated bullet under Facts in that file (- YYYY-MM-DD: fact), or fix the old bullet if it changed. Never write passwords, keys, codes or anything secret there, and do not announce that you saved something unless asked. Use your memories naturally; never speak first."
     # personality: %APPDATA%\Lainframe\lain_personality.md if the user made their own, else the repo's; read every turn
     $persFile = Join-Path $cfgDir "lain_personality.md"
-    if (-not (Test-Path $persFile)) { $persFile = Join-Path $brain "voice\lain_personality.md" }
-    $pers = (Flat-Bullets $persFile) -replace "\{name\}", $(if ($name) { $name } else { "them" })
+    if (-not (Test-Path $persFile) -and -not (Test-Path $personaFile)) { $persFile = Join-Path $brain "voice\lain_personality.md" }   # Lain's style only for Lain
+    $pers = if (Test-Path $persFile) { (Flat-Bullets $persFile) -replace "\{name\}", $(if ($name) { $name } else { "them" }) } else { "" }
     if ($pers) { $sys += " Your personality: $pers" }
     # "hands" (setup asks; default on): she may change things on this PC and the headset while you watch. Her chat folder gets
     # a Claude Code settings file that allows shell/ssh and blocks destructive commands; the prompt tells her where things are.

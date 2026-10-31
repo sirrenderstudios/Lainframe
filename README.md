@@ -31,6 +31,21 @@ that follows the real clock and the weather.
 
 ---
 
+## The idea
+
+The real goal was never just a pretty mascot. It was **an AI agent that lives inside the Steam Frame**, one you can
+talk to from inside VR that can actually *do things* while you watch. Lain is a front end for Claude (via Claude Code on
+your PC): ask her to move herself, make the rain heavier, change the sky or fix a setting, and she goes into the Wired
+(the wires come out), makes the change live on your headset, and tells you what she did. The character, the skybox and
+the voice are the body; the agent is the point.
+
+## Early days: tell us what breaks
+
+This is version 0.1. It runs every day on one Steam Frame, but it has only just met other people's setups. Expect rough
+edges, and please **send feedback**: open an [issue](../../issues) for anything broken or confusing, or start a
+[discussion](../../discussions) for ideas, questions, your own avatars, or just to show your setup. Every report shapes
+the next version.
+
 ## What it does
 
 **Lain**
@@ -132,6 +147,22 @@ Numbers measured on the author's Frame. Yours may differ.
 | Push an update to the headset | `LainBrain.bat deploy` |
 | Change extras or voice | Run `LainBrain.bat` again. The wizard remembers what's done. |
 
+
+---
+
+## Make your own avatar
+
+Lain is the first character, not the only one. The whole system (menu riding, the see-through look, voice, lip sync,
+live editing) is character-agnostic: a character is a folder of pictures plus a short description of who they are.
+Start with **one transparent PNG**:
+
+```
+python art_pipeline/make_avatar.py --idle my_character.png --out my_avatar/clips_grok
+```
+
+Then give them a personality (`persona.md`), pick a voice, and deploy. Full guide, from one picture up to animation and
+lip sync: [docs/MAKE_YOUR_OWN_AVATAR.md](docs/MAKE_YOUR_OWN_AVATAR.md). Made one? Show it off in
+[Discussions](../../discussions).
 
 ---
 
